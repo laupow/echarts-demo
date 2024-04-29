@@ -106,8 +106,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			}
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
+
 		yAxis: {
 			type: 'value',
 			boundaryGap: [0, '100%']
@@ -147,7 +151,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			trigger: 'axis'
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
 		yAxis: {
 			type: 'value',
@@ -170,7 +177,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			trigger: 'axis'
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
 		yAxis: {
 			type: 'value',
@@ -196,7 +206,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			}
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
 		yAxis: {
 			type: 'value',
@@ -224,7 +237,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			}
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
 		yAxis: {
 			type: 'value',
@@ -252,7 +268,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			}
 		},
 		xAxis: {
-			type: 'time'
+			type: 'time',
+			axisLabel: {
+				rotate: 0
+			}
 		},
 		yAxis: {
 			type: 'value',
@@ -318,6 +337,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	};
 	Object.keys(charts).forEach((chartId) => {
 		const chart = initResponsiveChart(chartId);
-		chart.setOption(charts[chartId]);
+		const options = charts[chartId];
+		chart.setOption(options);
+
+		// add resize listener to update axix rotate on small screens
+		updatexAxisLabel(chart);
+		window.addEventListener('resize', updatexAxisLabel.bind(null, chart));
 	});
 });
+
+
+function updatexAxisLabel(chart) {
+	let opts = chart.getOption();
+	opts.xAxis[0].axisLabel.rotate = window.innerWidth < 600 ? 45 : 0;
+	chart.setOption(opts);
+}
