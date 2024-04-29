@@ -48,7 +48,7 @@ body.dark-mode {
 /* For demonstration purposes, make the charts responsive */
 .card {
     width: 600px;
-    height: 400px;
+    max-height: 400px;
     margin-bottom: 20px;
 }
 
