@@ -1,0 +1,57 @@
+/* dark-mode-styles.css */
+
+body.dark-mode {
+    background-color: #01131D;
+    color: #c7c7c7;
+    font-family: 'Arial', sans-serif;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #002438   ;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Small screens (default) */
+@media (max-width: 639px) {
+    .card {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Medium screens (641px and up) */
+@media (min-width: 640px) {
+    .card {
+        width: calc(50% - 20px);
+        height: auto;
+    }
+}
+
+/* Large screens (961px and up) */
+@media (min-width: 961px) {
+    .card {
+        width: calc(33.3333% - 20px);
+        height: auto;
+    }
+}
+
+/* For demonstration purposes, make the charts responsive */
+.card {
+    width: 600px;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.echarts-title {
+    color: #ffffff;
+}
